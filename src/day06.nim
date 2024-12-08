@@ -25,12 +25,13 @@ proc findGuard(): ((int, int), (int, int)) =
                 of '^': (-1, 0)
                 of '>': (0, 1)
                 of 'v': (1, 0)
-                else: (0, -1)  # <
+                else: (0, -1) # <
             break
         inc(i)
     return ((i, j), dir)
 
-proc hasLoop(map: var seq[string], start, dir: var (int, int), steps: var int, visited: var Table[(int, int), bool]): bool =
+proc hasLoop(map: var seq[string], start, dir: var (int, int), steps: var int,
+        visited: var Table[(int, int), bool]): bool =
     while true:
         visited[start] = true
 
@@ -51,7 +52,7 @@ proc hasLoop(map: var seq[string], start, dir: var (int, int), steps: var int, v
 
 proc Part1(start, firstDir: (int, int), visited: var Table[(int, int), bool]): int =
     result = 1
-    var 
+    var
         (pos, dir) = (start, firstDir)
         mark = map
 

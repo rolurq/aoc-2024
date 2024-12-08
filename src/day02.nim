@@ -5,7 +5,7 @@ const debug = false
 var reports: seq[seq[int]] = @[]
 
 for line in stdin.lines:
-    var 
+    var
         numbers = line.split.map parseInt
         diffs = zip(numbers[0 .. ^2], numbers[1 .. ^1]).mapIt it[0] - it[1]
 
@@ -13,7 +13,8 @@ for line in stdin.lines:
     reports.add(diffs)
 
 proc isSafe(diffs: seq[int]): bool =
-    return (diffs.allIt(it > 0) and max(diffs) <= 3) or (diffs.allIt(it < 0) and min(diffs) >= -3)
+    return (diffs.allIt(it > 0) and max(diffs) <= 3) or (diffs.allIt(it < 0) and
+            min(diffs) >= -3)
 
 proc isRecoverable(d: seq[int]): bool =
     if d[1 .. ^1].isSafe: return true

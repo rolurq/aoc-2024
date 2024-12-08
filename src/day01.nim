@@ -1,16 +1,16 @@
 import strutils, sequtils, algorithm, math, tables
 
-let 
+let
     pairs = stdin
-            .readAll
-            .splitLines
-            .mapIt(it.split.map parseInt)
-            .mapIt (it[0], it[1])
+        .readAll
+        .splitLines
+        .mapIt(it.split.map parseInt)
+        .mapIt (it[0], it[1])
     (first, second) = pairs.unzip
 
 let distance = zip(first.sorted, second.sorted)
-               .mapIt(abs(it[0] - it[1]))
-               .sum
+    .mapIt(abs(it[0] - it[1]))
+    .sum
 
 echo "Part 1: " & $distance
 

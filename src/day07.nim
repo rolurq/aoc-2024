@@ -18,7 +18,7 @@ proc calculate(numbers: seq[int], current, target: int): bool =
     let slice = numbers[1 .. ^1]
     if slice.calculate(current * numbers[0], target) or
         slice.calculate(current + numbers[0], target):
-            return true
+        return true
 
     return false
 
@@ -30,11 +30,12 @@ proc concatenate(numbers: seq[int], current, target: int): bool =
     if slice.concatenate(parseInt($current & $numbers[0]), target) or
         slice.concatenate(current * numbers[0], target) or
         slice.concatenate(current + numbers[0], target):
-            return true
+        return true
 
     return false
 
-proc solve(input: Operations, f: proc (numbers: seq[int], current, target: int): bool): int =
+proc solve(input: Operations, f: proc (numbers: seq[int], current,
+        target: int): bool): int =
     input.filterIt(it[2 .. ^1].f(it[1], it[0])).mapIt(it[0]).sum
 
 let operations = readInput()
